@@ -1,0 +1,46 @@
+{
+    "users": [
+        {
+			"id": "146",
+			"code": "koichi.ozawa",
+			"ctime": "2015-06-14T05:33:08Z",
+			"mtime": "2018-08-29T10:10:11Z",
+			"valid": true,
+			"name": "小澤　浩一",
+			"surName": "小澤",
+			"givenName": "浩一",
+			"surNameReading": "おざわ",
+			"givenNameReading": "こういち",
+			"localName": "",
+			"localNameLocale": "ja",
+			"timezone": "Asia/Tokyo",
+			"locale": "ja",
+			"description": "",
+			"phone": "",
+			"mobilePhone": "050-5236-3087",
+			"extensionNumber": "80-701",
+			"email": "koichi.ozawa@motex.co.jp",
+			"callto": "",
+			"url": "",
+			"employeeNumber": "",
+			"birthDate": null,
+			"joinDate": null,
+			"primaryOrganization": "27",
+			"sortOrder": 4,
+			"customItemValues": [
+				{
+					"code": "keihihutan",
+					"value": "27E51611"
+				},
+				{
+					"code": "keihimattansoshiki",
+					"value": "開発管理課管理1グループ"
+				},
+				{
+					"code": "shainbango",
+					"value": "960350592"
+				}
+			]
+    	}
+	]
+}
