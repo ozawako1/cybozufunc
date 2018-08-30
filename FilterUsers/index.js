@@ -119,18 +119,15 @@ function queryCollection(who) {
         var found = queryiterator.hasMoreResults();
 
         if (found == false) {
-            console.log("not found. 1");
-            reject(new Error("Not found"));
+            console.log("[" + who + "] not found. 1");
+            reject(new Error("[" + who + "] Not found. 1"));
         }
         
         queryiterator.toArray((err, results) => {
             //ここでresultsのlengthを見るのは？だが、挙動から入れておく。
             if (err) {
-                console.log("not found. 2");
+                console.log("[" + who + "] not found. 2");
                 reject(err);
-            } else if(results.length == 0) {
-                console.log("not found. 3");
-                reject(new Error("Not Found."));
             } else {
                 for (var i = 0 ; i < results.length ; i++) {
                     let resultString = JSON.stringify(results[i]);
@@ -148,7 +145,9 @@ function add_garoon_id(item) {
     return getCollection()
             .then(() => queryCollection(item.code))
             .then((gids) => {
-                item["garoon_id"] = gids[0].userId;
+                if (gids.length > 0) {
+                    item["garoon_id"] = gids[0].userId;
+                }
                 return item;
             });
 }
