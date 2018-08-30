@@ -162,7 +162,7 @@ module.exports = function (context, data) {
 
     context.log(data);
 
-    if (data.query.localdbg == "true") {
+    if (config.env.runningon == "Local") {
         g_pfx = my_config.client_cert.pfxlocal;
     }
 
