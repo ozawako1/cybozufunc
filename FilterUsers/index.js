@@ -49,7 +49,7 @@
 
 */
 var documentClient = require("documentdb").DocumentClient;
-var config = require("./config.js");
+var config = require("./conf/config.js");
 
 var client = new documentClient(config.cosmosdb.endpoint, { "masterKey": config.cosmosdb.primaryKey });
 
