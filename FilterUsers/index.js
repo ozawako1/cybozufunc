@@ -74,9 +74,9 @@ function is_recent(itm) {
     var diff = now.getTime() - mod.getTime();
 
     //24時間以内の更新
-    if (diff < RECENTLY_UPDATED) {
+//    if (diff < RECENTLY_UPDATED) {
         ret = true;
-    }
+//    }
 
     return ret;
 }
