@@ -56,30 +56,6 @@
 //var collectionUrl = `${databaseUrl}/colls/${config.cosmosdb.collectionid}`;
 //var Promise = require('promise');
 
-
-const RECENTLY_UPDATED = (1000 * 60 * 60 * 24);
-
-function is_recent(itm) {
-    var ret = false;
-
-    if (( itm.valid == false ) ||
-        ( itm.primaryOrganization == null ) ||
-        ( itm.sortOrder == null )) {
-        return ret;
-    }
-
-    var mod = new Date(itm.mtime);
-    var now = new Date();
-    var diff = now.getTime() - mod.getTime();
-
-    //24時間以内の更新
-//    if (diff < RECENTLY_UPDATED) {
-        ret = true;
-//    }
-
-    return ret;
-}
-
 /*
 function getCollection() {
     console.log(`Getting collection:\n${config.cosmosdb.collectionid}\n`);
@@ -146,6 +122,28 @@ function add_garoon_id(item) {
 }
 */
 
+const RECENTLY_UPDATED = (1000 * 60 * 60 * 24);
+
+function is_recent(itm) {
+    var ret = false;
+
+    if (( itm.valid == false ) ||
+        ( itm.primaryOrganization == null ) ||
+        ( itm.sortOrder == null )) {
+        return ret;
+    }
+
+    var mod = new Date(itm.mtime);
+    var now = new Date();
+    var diff = now.getTime() - mod.getTime();
+
+    //24時間以内の更新
+    if (diff < RECENTLY_UPDATED) {
+        ret = true;
+    }
+
+    return ret;
+}
 
 
 module.exports = function (context, data) {

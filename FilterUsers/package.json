@@ -9,8 +9,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "documentdb": "^1.14.5",
-    "promise": "^8.0.1"
-  }
+  "dependencies": {}
 }
