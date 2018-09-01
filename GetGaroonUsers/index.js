@@ -162,7 +162,7 @@ module.exports = function (context, data) {
 
     context.log(data);
 
-    if (config.env.runningon == "Local") {
+    if (my_config.env.runningon == "Local") {
         g_pfx = my_config.client_cert.pfxlocal;
     }
 
@@ -199,7 +199,7 @@ module.exports = function (context, data) {
                 
                 nodes.forEach(function(itm){
                     parseString(itm, parse_opt, function (err, result) {
-                        context.log(result);
+                        console.log(result);
                         arr.push(result.userDetail);
                     });
                 });
