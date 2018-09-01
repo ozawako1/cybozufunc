@@ -48,15 +48,14 @@
 /*
 
 */
-var documentClient = require("documentdb").DocumentClient;
-var config = require("../conf/config.js");
 
-var client = new documentClient(config.cosmosdb.endpoint, { "masterKey": config.cosmosdb.primaryKey });
+//var config = require("../conf/config.js");
+//var documentClient = require("documentdb").DocumentClient;
+//var client = new documentClient(config.cosmosdb.endpoint, { "masterKey": config.cosmosdb.primaryKey });
+//var databaseUrl = `dbs/${config.cosmosdb.databaseid}`;
+//var collectionUrl = `${databaseUrl}/colls/${config.cosmosdb.collectionid}`;
+//var Promise = require('promise');
 
-var databaseUrl = `dbs/${config.cosmosdb.databaseid}`;
-var collectionUrl = `${databaseUrl}/colls/${config.cosmosdb.collectionid}`;
-
-var Promise = require('promise');
 
 const RECENTLY_UPDATED = (1000 * 60 * 60 * 24);
 
@@ -81,10 +80,7 @@ function is_recent(itm) {
     return ret;
 }
 
-
-/**
- * Get the collection by ID, or create if it doesn't exist.
- */
+/*
 function getCollection() {
     console.log(`Getting collection:\n${config.cosmosdb.collectionid}\n`);
 
@@ -100,9 +96,6 @@ function getCollection() {
 }
 
 
-/**
- * Query the collection using SQL
- */
 function queryCollection(who) {
     console.log('Querying collection :' + config.cosmosdb.collectionid);
 
@@ -151,6 +144,7 @@ function add_garoon_id(item) {
                 return item;
             });
 }
+*/
 
 
 
