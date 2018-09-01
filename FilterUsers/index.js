@@ -170,25 +170,14 @@ module.exports = function (context, data) {
         var input = data.body.users;
         var incnt = input.length;
         var updatedusers = input.filter(item => is_recent(item));
-        var promises = updatedusers.map(item => add_garoon_id(item));
-        
-        Promise.all(promises)
-            .then((result) => {
-                context.log("Input("+ incnt +") Modified(" + result.length +")");
-                context.res = {
-                    status: 200,
-                    body: { "users": result }
-                }
-                context.done();
-            })                
-            .catch((err) => {
-                context.log(err.message);
-                context.res = {
-                    status: 500,
-                    body: { "Error": err.message }
-                }       
-                context.done();            
-            });
+
+        context.log("Input("+ incnt +") Modified(" + updatedusers.length +")");
+        context.res = {
+            status: 200,
+            body: { "users": updatedusers }
+        }
+        context.done();
 
     }
+
 }
