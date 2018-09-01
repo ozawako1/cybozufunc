@@ -84,10 +84,11 @@ function get_schedule(obj, isnow) {
 module.exports = function (context, req) {
 
     context.log('Webhook was triggered!');
-    context.log(req);
 
     var userid = req.body.garoonid;
     var checknow = req.body.now;
+
+    context.log("request = [" + userid + "]");
 
     var pfx = my_config.client_cert.pfx;
     if (my_config.env.runningon == "Local") {
