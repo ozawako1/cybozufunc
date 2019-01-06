@@ -85,8 +85,11 @@ module.exports = function (context, req) {
 
     context.log('Webhook was triggered!');
 
-    var userid = req.body.garoonid;
-    var checknow = req.body.now;
+//    var userid = req.body.garoonid;
+//    var checknow = req.body.now;
+//    context.log(req);
+    var userid = req.query.garoonid;
+    var checknow = req.query.now;
 
     context.log("request = [" + userid + "]");
 
