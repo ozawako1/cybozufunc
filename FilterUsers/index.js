@@ -122,7 +122,7 @@ function add_garoon_id(item) {
 }
 */
 
-const RECENTLY_UPDATED = (1000 * 60 * 60 * 24 * 200);
+const RECENTLY_UPDATED = (1000 * 60 * 60 * 24);
 
 function is_recent(itm) {
     var ret = false;
