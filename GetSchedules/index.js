@@ -2,9 +2,6 @@
 var rp = require('request-promise');
 var fs = require('fs');
 
-var my_config = require("../conf/config.js");
-
-
 /*
     {
       "subject": "【Cat＆An：保守サイト更新スケジュール】8月分",
@@ -93,11 +90,6 @@ module.exports = function (context, req) {
 
     context.log("request = [" + userid + "]");
 
-    var pfx = my_config.client_cert.pfx;
-    if (my_config.env.runningon == "Local") {
-        pfx = my_config.client_cert.pfxlocal;
-    }
-
     var sttime= new Date();
     var edtime = new Date();
     
@@ -115,11 +107,11 @@ module.exports = function (context, req) {
             "fields": "subject,start,end,attendees,facilities"
         },
         headers: {
-            "X-Cybozu-Authorization": my_config.login.token
+            "X-Cybozu-Authorization": process.env.MY_GAROON_AUTH_STRING
         },
         agentOptions: {
-            pfx: fs.readFileSync(pfx),
-            passphrase: my_config.client_cert.password,
+            pfx: fs.readFileSync(process.env.MY_GAROON_CERT),
+            passphrase: process.env.MY_GAROON_CERT_PASS,
             securityOptions: 'SSL_OP_NO_SSLv3'
         },
         json: true // Automatically parses the JSON string in the response

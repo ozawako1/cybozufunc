@@ -58,9 +58,6 @@ var rp = require('request-promise');
 var fs = require('fs');
 var xpath = require('xpath')
 var dom = require('xmldom').DOMParser
-var my_config = require("../conf/config.js");
-
-var g_pfx = my_config.client_cert.pfx;
 
 const TYPE_IDS = 1;
 const TYPE_DETAIL = 2;
@@ -101,8 +98,8 @@ function get_userdetail(nextparam) {
         method: "POST",
         uri: "https://motex.s.cybozu.com/g/sysapi/admin/api.csp",
         agentOptions: {
-            pfx: fs.readFileSync(g_pfx),
-            passphrase: my_config.client_cert.password,
+            pfx: fs.readFileSync(process.env.MY_GAROON_CERT),
+            passphrase: process.env.MY_GAROON_CERT_PASS,
             securityOptions: 'SSL_OP_NO_SSLv3'
         },
         headers:{
@@ -135,8 +132,8 @@ function getsoapmsg(msg_type, parameters) {
                 '<Action>'+ action +'</Action>'+
                 '<Security>'+
                     '<UsernameToken>'+
-                        '<Username>'+my_config.login.userid+'</Username>'+
-                        '<Password>'+my_config.login.password+'</Password>'+
+                        '<Username>'+ process.env.MY_GAROON_USER_ID +'</Username>'+
+                        '<Password>'+ process.env.MY_GAROON_PASSWORD +'</Password>'+
                     '</UsernameToken>'+
                 '</Security>'+
                 '<Timestamp>'+
@@ -158,20 +155,14 @@ function getsoapmsg(msg_type, parameters) {
 
 module.exports = function (context, data) {
 
-    context.log('Webhook was triggered!');
-
-    context.log(data);
-
-    if (my_config.env.runningon == "Local") {
-        g_pfx = my_config.client_cert.pfxlocal;
-    }
+    context.log('GeatGaroonUsers was triggered!');
 
     var options = {
         method: "POST",
         uri: "https://motex.s.cybozu.com/g/sysapi/admin/api.csp",
         agentOptions: {
-            pfx: fs.readFileSync(g_pfx),
-            passphrase: my_config.client_cert.password,
+            pfx: fs.readFileSync(process.env.MY_GAROON_CERT),
+            passphrase: process.env.MY_GAROON_CERT_PASS,
             securityOptions: 'SSL_OP_NO_SSLv3'
         },
         headers:{
