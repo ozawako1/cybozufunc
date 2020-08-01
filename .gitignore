@@ -2,3 +2,4 @@ GetZoomFacilities/sample.dat
 node_modules/
 local.settings.json
 
+.DS_Store
